@@ -17,7 +17,7 @@ https://github.com/YbSain/CVworkspace/blob/a0ea67aa84102feed9ac5c457ffd2c65a42ab
 
 ### 영상관련
 
-https://github.com/YbSain/CVworkspace/blob/a0ea67aa84102feed9ac5c457ffd2c65a42abfba/linetrace/main.cpp#L32-L47
+https://github.com/YbSain/linedetect_sim/blob/eeb3ecc53bb2024f5b73598c171bc358f028a2c9/main.cpp#L29-L38
 
 
 해당 파트에서 cap으로 "7_it_ccw_100rpm_in.mp4" 영상을 입력받고, 그것을 gstream으로 윈도우즈의 powershell 환경에서 확인할 수 있게 만들었다.
