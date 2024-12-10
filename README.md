@@ -33,18 +33,17 @@ https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089
 
 메인 코드 내부에서 while(true) 반복문 시작과 동시에 시간을 측정시키기 위해 사용되었다.
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L86-L91
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L98-L101
 
 
 코드의 후반부분에  end1이 들어가며 시간 계산을 마무리한 뒤, diff에 초기화하여 cout으로 출력하는 작업을 거침
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L67-L69
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L79-L85
 
 
 해당 과정은 원본 > Roi범위 > GrayScale > 밝기 조절 > 이진화 > 잡음관리까지 포함시킨 Mat makethresh()를 사용하였고, 추후 레이블링을 하기 위해서 clone()을 만들어, GrayScale영상을 하나 구비 해 두었다.
 
-
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L100-L123
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L111-L134
 
 위에서 사용된 makethresh() 내부 모습인데, 640x360 중 높이가 90cm인 하단 부분을 Roi범위로 지정하고 싶어, y점을 270으로 지정하였다.
 
@@ -56,13 +55,13 @@ converTo() 함수를 이용하여 같은 영상조건으로 해당 수치만큼 
 
 이후에는 이진화 및, 잡음 추가 작업이 이루어져있다.
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L71-L73
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L135-L166
 
-해당파트는 Labeling으로 칭한 함수를 통해 targetCenter 즉 매번 움직이는 도로의 중심좌표를 짚고, 영상의 중앙 좌표를 비교하여 error값을 구해내는 파트임.
+초기에 영상의 중앙을 기준으로 거리(x좌표)가 80, -80 사이 일 경우 작동하게함 < 좌표이기때문에 반대 방향으로 갈 경우 음수처리되어 양수와 음수를 둘 다 처리함    
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L124-L155
+해당파트는 Labeling으로 칭한 함수를 통해 targetCenter 즉 매번 움직이는 도로의 중심좌표를 짚고, 영상의 중앙 좌표를 비교하여 error값을 구해내는 파트임.    
 
-이는 레이블링 함수인데, labels, stats, centroids를 사용해서 도로를 네모 + 붉은 색으로 표현하고, 그 외의 감지되는 것은 다른 색으로 표현하였다.
+labels, stats, centroids를 사용해서 도로를 네모 + 붉은 색으로 표현하고, 그 외의 감지되는 것은 다른 색으로 표현하였다.
 
 xdistance는 타겟의 센터 위치 - 무게중심 x좌표의 차이인데, 이 값의 차이가 너무 크거나 너무 작을 경우, 해당 객체가 아닌 다른 객체를 인지 했을 거라 판단하여, 다시 감지 할 때까지 다른 행동을 하지 않음.  
 
@@ -72,7 +71,20 @@ true로 전환 된 이후에는 조건에 부합할경우 현재 중앙좌표와
 
 이후 해당함수는 Grayframe 즉, 해당 객체의 움직임을 보여주기위한 rect, circle이 그려진 영상을 반환한다.
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L153-L155
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L167-L169
 
 해당 함수는 getError 즉 영상의 x좌표 중앙 값과, 타겟이 된 도로위치 객체의 x좌표를 비교하여 int getError의 반환 값으로 반환시킴.
+
+
+
+### DXL 모터
+
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L58-L60
+
+https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L87-L95
+
+위에서 구한 Error 값을 토대로 0.1만큼 곱해서 해당 속도를 조절하도록 하였음.
+
+-> 추후에 시뮬레이션 한 이후 K의 값은 조절할 예정
+
 
