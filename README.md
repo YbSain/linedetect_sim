@@ -2,9 +2,14 @@
 ## 화면
 
 [https://youtu.be/uKRLkhhVYKI](https://youtu.be/5Y556hC90vM?si=HEa8OffGyhtZt3Km)
+// lt 7 cw 
+https://youtu.be/Q3MHuUEuacA
+// lt 5 ccw 영상이다.
+
 ## 로봇 포함
 
 https://youtube.com/shorts/T-Y4QZZH1-U?si=685WmZXFb4cQ0NZB
+//lt 7 cw로 영상에 따라 바퀴의 속도가 조절되는 모습
 
 # 정리
 
