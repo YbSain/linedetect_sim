@@ -26,14 +26,16 @@ int getError(Mat& thresh, Point& tmp_pt);
 int main(void) {
     TickMeter tm;
     //원본
-    // string src = "nvarguscamerasrc sensor-id=0 ! 
-    //     video/x-raw(memory:NVMM), width=(int)640, height=(int)360, 
-    //     format=(string)NV12, framerate=(fraction)30/1 ! 
-    //     nvvidconv flip-method=0 ! video/x-raw, 
-    //     width=(int)640, height=(int)360, format=(string)BGRx ! 
-    //     videoconvert ! video/x-raw, format=(string)BGR ! appsink";
-    VideoCapture cap("7_lt_ccw_100rpm_in.mp4");
-    if (!cap.isOpened()) { cerr << "video open failed!" << endl; return -1; }
+    string src = "nvarguscamerasrc sensor-id=0 ! \
+        video/x-raw(memory:NVMM), width=(int)640, height=(int)360, \
+        format=(string)NV12, framerate=(fraction)30/1 ! \
+        nvvidconv flip-method=0 ! video/x-raw, \
+        width=(int)640, height=(int)360, format=(string)BGRx ! \
+        videoconvert ! video/x-raw, format=(string)BGR ! appsink";
+
+    VideoCapture source(src, CAP_GSTREAMER);
+    // VideoCapture cap("7_lt_ccw_100rpm_in.mp4");
+    // if (!cap.isOpened()) { cerr << "video open failed!" << endl; return -1; }
 
     string dst1 = "appsrc ! videoconvert ! video/x-raw, format=BGRx ! \
             nvvidconv ! nvv4l2h264enc insert-sps-pps=true ! \
@@ -66,7 +68,8 @@ int main(void) {
 
     while (true) {
         gettimeofday(&start, NULL);
-        cap >> frame;
+        //cap >> frame;
+        source >> frame;
         if (frame.empty()) {
             break;
         }
