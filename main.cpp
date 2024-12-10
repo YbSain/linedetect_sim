@@ -35,8 +35,8 @@ int main(void) {
 
     // VideoCapture source(src, CAP_GSTREAMER);
     // if(!source.isOpened()) { cerr << "Video Open Failed!!" << endl; return -1; }
-    // VideoCapture cap("5_lt_cw_100rpm_out.mp4");
-    VideoCapture cap("7_lt_ccw_100rpm_in.mp4");
+    VideoCapture cap("5_lt_cw_100rpm_out.mp4");
+    //VideoCapture cap("7_lt_ccw_100rpm_in.mp4");
     if (!cap.isOpened()) { cerr << "video open failed!" << endl; return -1; }
 
     string dst1 = "appsrc ! videoconvert ! video/x-raw, format=BGRx ! \
@@ -144,16 +144,17 @@ Mat Labeling(Mat Threshframe, Mat Grayframe) {
         Point2d currentCenter(c[0], c[1]);
         
         rectangle(Grayframe, Rect(p[0], p[1], p[2], p[3]), Scalar(0, 255, 255), 2);
-        double xdistance = targetCenter.x - c[0];
+        double xdistance = targetCenter.x - c[0];       //무게중심x와 타겟 x좌표
         if (!isTarget) {
             targetCenter = firstCenter;
             isTarget = true;
         }
         else {
-            if ((xdistance <= 80 && xdistance >= -80)) {
+            if ((xdistance <= 80 && xdistance >= -80)) {        // 무게중심과 타겟이 멀지않을 때
                 rectangle(Grayframe, Rect(p[0], p[1], p[2], p[3]), Scalar(0, 0, 255), 2);
                 circle(Grayframe, targetCenter, 3, Scalar(0, 255, 0), 2);
                 circle(Grayframe, currentCenter, 5, Scalar(0, 255, 0), FILLED);
+                cout <<"center:"<< currentCenter.x <<"\t" << targetCenter.x<< endl;
                 targetBoundingBox = currentBoundingBox;
                 targetCenter = currentCenter;
             }
