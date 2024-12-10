@@ -12,11 +12,13 @@ https://youtube.com/shorts/T-Y4QZZH1-U?si=685WmZXFb4cQ0NZB
 
 https://github.com/YbSain/CVworkspace/blob/a0ea67aa84102feed9ac5c457ffd2c65a42abfba/linetrace/main.cpp#L11-L21
 
+
 동작 및 함수에 관련된 파트들이다.
 
 ### 영상관련
 
 https://github.com/YbSain/CVworkspace/blob/a0ea67aa84102feed9ac5c457ffd2c65a42abfba/linetrace/main.cpp#L32-L47
+
 
 해당 파트에서 cap으로 "7_it_ccw_100rpm_in.mp4" 영상을 입력받고, 그것을 gstream으로 윈도우즈의 powershell 환경에서 확인할 수 있게 만들었다.
 
@@ -28,15 +30,19 @@ writer2는 사이즈를 640, 90으로 따로 조절 해 주었음.
 
 https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L61
 
+
 메인 코드 내부에서 while(true) 반복문 시작과 동시에 시간을 측정시키기 위해 사용되었다.
 
 https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L86-L91
+
 
 코드의 후반부분에  end1이 들어가며 시간 계산을 마무리한 뒤, diff에 초기화하여 cout으로 출력하는 작업을 거침
 
 https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L67-L69
 
+
 해당 과정은 원본 > Roi범위 > GrayScale > 밝기 조절 > 이진화 > 잡음관리까지 포함시킨 Mat makethresh()를 사용하였고, 추후 레이블링을 하기 위해서 clone()을 만들어, GrayScale영상을 하나 구비 해 두었다.
+
 
 https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L100-L123
 
