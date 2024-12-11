@@ -33,7 +33,7 @@ writer2는 사이즈를 640, 90으로 따로 조절 해 주었음.
 
 ### 런타임 지정
 
-https://github.com/YbSain/CVworkspace/blob/0889c5afc8b5aceb50e80173acf98271cf089b5f/linetrace/main.cpp#L61
+https://github.com/YbSain/linedetect_sim/blob/2eb5db4c19b9c1369dc76f515ed46ecc4777fe9b/main2.cpp#L57
 
 
 메인 코드 내부에서 while(true) 반복문 시작과 동시에 시간을 측정시키기 위해 사용되었다.
