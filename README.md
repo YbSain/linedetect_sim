@@ -15,7 +15,7 @@ https://youtube.com/shorts/T-Y4QZZH1-U?si=685WmZXFb4cQ0NZB
 
 ## 상단부
 
-https://github.com/YbSain/CVworkspace/blob/a0ea67aa84102feed9ac5c457ffd2c65a42abfba/linetrace/main.cpp#L11-L21
+https://github.com/YbSain/linedetect_sim/blob/2eb5db4c19b9c1369dc76f515ed46ecc4777fe9b/main2.cpp#L3-L6
 
 
 동작 및 함수에 관련된 파트들이다.
