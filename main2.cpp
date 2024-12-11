@@ -7,25 +7,33 @@ bool isTarget = false;
 
 int main() {
     TickMeter tm;
+    //원본
+    // string src = "nvarguscamerasrc sensor-id=0 ! 
+    //     video/x-raw(memory:NVMM), width=(int)640, height=(int)360, 
+    //     format=(string)NV12, framerate=(fraction)30/1 ! 
+    //     nvvidconv flip-method=0 ! video/x-raw, 
+    //     width=(int)640, height=(int)360, format=(string)BGRx ! 
+    //     videoconvert ! video/x-raw, format=(string)BGR ! appsink";
+
+    // VideoCapture source(src, CAP_GSTREAMER);
+    // if(!source.isOpened()) { cerr << "Video Open Failed!!" << endl; return -1; }
     VideoCapture cap("5_lt_cw_100rpm_out.mp4");
-    if (!cap.isOpened()) {
-        cerr << "Video open failed!" << endl;
-        return -1;
-    }
+    //VideoCapture cap("7_lt_ccw_100rpm_in.mp4");
+    if (!cap.isOpened()) { cerr << "video open failed!" << endl; return -1; }
 
     string dst1 = "appsrc ! videoconvert ! video/x-raw, format=BGRx ! \
             nvvidconv ! nvv4l2h264enc insert-sps-pps=true ! \
             h264parse ! rtph264pay pt=96 ! \
             udpsink host=203.234.58.170 port=8001 sync=false";
-
+            
     string dst2 = "appsrc ! videoconvert ! video/x-raw, format=BGRx ! \
             nvvidconv ! nvv4l2h264enc insert-sps-pps=true ! \
             h264parse ! rtph264pay pt=96 ! \
             udpsink host=203.234.58.170 port=8002 sync=false";
-
     VideoWriter writer1(dst1, 0, (double)30, Size(640, 360), true);
+    if (!writer1.isOpened()) { cerr << "Writer open failed!" << endl; return -1; }
     VideoWriter writer2(dst2, 0, (double)30, Size(640, 90), true);
-
+    if (!writer2.isOpened()) { cerr << "Writer open failed!" << endl; return -1; }
     if (!writer1.isOpened() || !writer2.isOpened()) {
         cerr << "Writer open failed!" << endl;
         return -1;
