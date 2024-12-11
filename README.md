@@ -25,8 +25,7 @@ https://github.com/YbSain/linedetect_sim/blob/2eb5db4c19b9c1369dc76f515ed46ecc47
 
 https://github.com/YbSain/linedetect_sim/blob/eeb3ecc53bb2024f5b73598c171bc358f028a2c9/main.cpp#L29-L38
 
-
-해당 파트에서 cap으로 "7_it_ccw_100rpm_in.mp4" 영상을 입력받고, 그것을 gstream으로 윈도우즈의 powershell 환경에서 확인할 수 있게 만들었다.
+카메라와 GSTREAMER를 이용하여 영상 처리함
 
 #### Roi
 
