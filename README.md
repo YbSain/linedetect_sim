@@ -10,7 +10,7 @@ https://youtu.be/Q3MHuUEuacA
 
 https://youtube.com/shorts/T-Y4QZZH1-U?si=685WmZXFb4cQ0NZB
 //lt 7 ccw로 영상에 따라 바퀴의 속도가 조절되는 모습
-https://youtu.be/Q3MHuUEuacA
+https://youtube.com/shorts/CuHqS9DtVdc?si=HBAjNF9FTvHQ2NUm
 //lt 5cw
 # 정리
 
