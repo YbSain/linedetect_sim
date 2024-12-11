@@ -8,7 +8,7 @@ https://youtu.be/Q3MHuUEuacA
 
 ## 로봇 포함
 
-https://youtu.be/u5oisMOyLfY?si=Iy2T5Farp4BU9hrC
+https://youtu.be/u5oisMOyLfY?si=Iy2T5Farp4BU9hrC     
 //lt 7 ccw로 영상에 따라 바퀴의 속도가 조절되는 모습    
 https://youtube.com/shorts/CuHqS9DtVdc?si=HBAjNF9FTvHQ2NUm    
 //lt 5cw    
