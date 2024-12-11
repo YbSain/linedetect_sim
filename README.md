@@ -44,6 +44,8 @@ https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b3104
 
 코드의 후반부분에  end1이 들어가며 시간 계산을 마무리한 뒤, diff에 초기화하여 cout으로 출력하는 작업을 거침
 
+## 전처리
+
 https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L79-L85
 
 
@@ -61,11 +63,13 @@ converTo() 함수를 이용하여 같은 영상조건으로 해당 수치만큼 
 
 이후에는 이진화 및, 잡음 추가 작업이 이루어져있다.
 
+## 조건
+
 https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L135-L166
 
-초기에 영상의 중앙을 기준으로 거리(x좌표)가 80, -80 사이 일 경우 작동하게함 < 좌표이기때문에 반대 방향으로 갈 경우 음수처리되어 양수와 음수를 둘 다 처리함    
+초기에 영상의 중앙을 기준으로 거리(x좌표)가 50, -50 사이 일 경우 작동하게함 < 좌표이기때문에 반대 방향으로 갈 경우 음수처리되어 양수와 음수를 둘 다 처리함    
 
-해당파트는 Labeling으로 칭한 함수를 통해 targetCenter 즉 매번 움직이는 도로의 중심좌표를 짚고, 영상의 중앙 좌표를 비교하여 error값을 구해내는 파트임.    
+해당파트는 Labeling으로 칭한 함수를 통해 targetCenter 즉 매번 움직이는 도로의 중심좌표를 짚고, 영상의 중앙 좌표를 비교하여 error값에 사용할 객체의 무게중심을 구해내는 파트임.    
 
 labels, stats, centroids를 사용해서 도로를 네모 + 붉은 색으로 표현하고, 그 외의 감지되는 것은 다른 색으로 표현하였다.
 
@@ -73,13 +77,13 @@ xdistance는 타겟의 센터 위치 - 무게중심 x좌표의 차이인데, 이
 
 가장 처음으로는 bool으로 가장 처음 좌표를 선정 한 뒤, true로 전환하여 아래의 조건문을 활용하도록 함.    
 
-true로 전환 된 이후에는 조건에 부합할경우 현재 중앙좌표와 바운딩 박스를 지속적으로 저장하게 하고, 해당 객체의 중앙에는 circle 테두리에는 rectangle을 그려냄.
+true로 전환 된 이후에는 조건에 부합할경우 현재 중앙좌표와 바운딩 박스를 지속적으로 저장하게 하고, 해당 객체의 중앙에는 circle 테두리에는 rectangle을 그려냄.  
 
 이후 해당함수는 Grayframe 즉, 해당 객체의 움직임을 보여주기위한 rect, circle이 그려진 영상을 반환한다.
 
 https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L167-L169
 
-해당 함수는 getError 즉 영상의 x좌표 중앙 값과, 타겟이 된 도로위치 객체의 x좌표를 비교하여 int getError의 반환 값으로 반환시킴.
+해당 함수는 getError 즉 영상의 중앙 x좌표 값과, 타겟이 된 도로위치 객체의 x좌표를 비교하여 int getError의 반환 값으로 반환시킴.
 
 
 
@@ -89,7 +93,15 @@ https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b3104
 
 https://github.com/YbSain/linedetect_sim/blob/f438ca49c20454c5b0a74a5ffef41b31045e4049/main.cpp#L87-L95
 
-위에서 구한 Error 값을 토대로 0.1만큼 곱해서 해당 속도를 조절하도록 하였음.
+     if (mx.kbhit()){
+         char ch = mx.getch();
+         if (ch == 'q') break;
+         else if (ch == 's') mode = true;
+     }
+
+해당 조건문에서 s 를 받을 경우 mode가 true로 변경되며 95번째 줄에 있는 조건문의 조건이 만족돼서 mx.setVelocity(좌, 우); 함수가 작동됨에 따라 모터가 작동하는 방식이다.
+
+좌, 우 즉 lval, rval 값은 위에서 구한 Error 값을 토대로 0.1만큼 곱해서 해당 속도를 조절하도록 하였음.
 
 -> 추후에 시뮬레이션 한 이후 K의 값은 조절할 예정
 
