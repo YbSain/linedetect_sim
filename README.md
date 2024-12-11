@@ -1,10 +1,10 @@
 # 유튜브 링크 
 ## 화면
 
-[https://youtu.be/uKRLkhhVYKI](https://youtu.be/5Y556hC90vM?si=HEa8OffGyhtZt3Km)
-// lt 7 cw 
-https://youtu.be/Q3MHuUEuacA
-// lt 5 ccw 영상이다.
+[https://youtu.be/uKRLkhhVYKI](https://youtu.be/5Y556hC90vM?si=HEa8OffGyhtZt3Km)    
+// lt 7 cw     
+https://youtu.be/Q3MHuUEuacA    
+// lt 5 ccw 영상이다.    
 
 ## 로봇 포함
 
